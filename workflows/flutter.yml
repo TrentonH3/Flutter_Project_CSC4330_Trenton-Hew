@@ -1,0 +1,28 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./do_nothing_button
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: 'stable'
+      - run: flutter pub get
+<<<<<<< HEAD
+      - run: flutter test
+=======
+      - run: flutter create . --platforms=android
+>>>>>>> 13099a5a3cfbf9b5b9a29d8ad63f93a0c7e7dc8e
+      - run: flutter build apk --debug
